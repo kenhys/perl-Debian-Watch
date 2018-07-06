@@ -209,6 +209,7 @@ sub _parse_watchfile {
     my $self = shift;
     my $watchfile = $self->{path};
     my $package = $self->{package};
+    my $version = $self->{version};
     my $status=0;
     my $nextline;
 
