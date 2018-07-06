@@ -284,12 +284,12 @@ sub _parse_watchfile {
     return $status;
 }
 
-sub process_watchline ($$$$$$)
+sub process_watchline ($$$$$)
 {
 #######################################################################
 # {{{ code 3.0: initializer and watchline parser
 #######################################################################
-    my ($line, $watch_version, $pkg_dir, $pkg, $pkg_version, $watchfile) = @_;
+    my ($line, $watch_version, $pkg, $pkg_version, $watchfile) = @_;
     # $line		watch line string (concatenated line over the tailing \ )
     # $watch_version	usually 4 (or 3)
     # $pkg_dir		usually .
