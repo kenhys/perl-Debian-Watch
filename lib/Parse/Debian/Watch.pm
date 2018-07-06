@@ -29,6 +29,7 @@ sub new {
 	nopasv => 0,
 	unzipopt => "",
 	dversionmangle => "",
+	dirversionmangle => "",
 	pagemangle => "",
 	uversionmangle => "",
 	versionmangle => "",
