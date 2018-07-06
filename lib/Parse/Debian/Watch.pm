@@ -187,6 +187,91 @@ sub oversionmangle {
     return $self->{oversionmangle};
 }
 
+sub uscan_warn {
+    # FIXME
+}
+
+sub _parse_watchfile {
+    my $self = shift;
+    my $watchfile = $self->{path};
+    my $package = $self->{package};
+    my $watch_version=0;
+    my $status=0;
+    my $nextline;
+
+    unless (open WATCH, $watchfile) {
+	uscan_warn "could not open $watchfile: $!\n";
+	return 1;
+    }
+
+    while (<WATCH>) {
+	next if /^\s*\#/;
+	next if /^\s*$/;
+	s/^\s*//;
+
+    CHOMP:
+	chomp;
+	if (s/(?<!\\)\\$//) {
+	    if (eof(WATCH)) {
+		uscan_warn "$watchfile ended with \\; skipping last line\n";
+		$status=1;
+		last;
+	    }
+	    if ($watch_version > 3) {
+	        # drop leading \s only if version 4
+		$nextline = <WATCH>;
+		$nextline =~ s/^\s*//;
+		$_ .= $nextline;
+	    } else {
+		$_ .= <WATCH>;
+	    }
+	    goto CHOMP;
+	}
+
+	if (! $watch_version) {
+	    if (/^version\s*=\s*(\d+)(\s|$)/) {
+		$watch_version=$1;
+		if ($watch_version < 2 or
+		    $watch_version > $self->{current_watchfile_version}) {
+		    uscan_warn "$watchfile version number is unrecognised; skipping watch file\n";
+		    last;
+		}
+		next;
+	    } else {
+		uscan_warn "$watchfile is an obsolete version 1 watch file;\n   please upgrade to a higher version\n   (see uscan(1) for details).\n";
+		$watch_version=1;
+	    }
+	}
+
+	# Are there any warnings from this part to give if we're using dehs?
+	#dehs_output if $dehs;
+
+	# Handle shell \\ -> \
+	s/\\\\/\\/g if $watch_version==1;
+
+	# Handle @PACKAGE@ @ANY_VERSION@ @ARCHIVE_EXT@ substitutions
+	my $any_version = '[-_]?(\d[\-+\.:\~\da-zA-Z]*)';
+	my $archive_ext = '(?i)\.(?:tar\.xz|tar\.bz2|tar\.gz|zip|tgz|tbz|txz)';
+	my $signature_ext = $archive_ext . '\.(?:asc|pgp|gpg|sig|sign)';
+	s/\@PACKAGE\@/$package/g;
+	s/\@ANY_VERSION\@/$any_version/g;
+	s/\@ARCHIVE_EXT\@/$archive_ext/g;
+	s/\@SIGNATURE_EXT\@/$signature_ext/g;
+
+=pod
+	$status +=
+	    process_watchline($_, $watch_version, $pkg_dir, $package, $version,
+			      $watchfile);
+	dehs_output if $dehs;
+=cut
+    }
+
+    close WATCH or
+	$status=1, uscan_warn "problems reading $watchfile: $!\n";
+
+    return $status;
+}
+
 1;
 __END__
 
