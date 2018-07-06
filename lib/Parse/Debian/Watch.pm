@@ -273,7 +273,7 @@ sub _parse_watchfile {
 	s/\@SIGNATURE_EXT\@/$signature_ext/g;
 
 	$status +=
-	    _process_watchline($_, $watch_version, $package, $version, $watchfile);
+	    _process_watchline($_, $self->{watch_version}, $package, $version, $watchfile);
     }
 
     close WATCH or
