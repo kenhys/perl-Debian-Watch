@@ -270,12 +270,8 @@ sub _parse_watchfile {
 	s/\@ARCHIVE_EXT\@/$archive_ext/g;
 	s/\@SIGNATURE_EXT\@/$signature_ext/g;
 
-=pod
 	$status +=
-	    process_watchline($_, $watch_version, $pkg_dir, $package, $version,
-			      $watchfile);
-	dehs_output if $dehs;
-=cut
+	    _process_watchline($_, $watch_version, $package, $version, $watchfile);
     }
 
     close WATCH or
