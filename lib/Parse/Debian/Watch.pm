@@ -11,6 +11,32 @@ sub new {
     my %params = @_;
     my $self = bless {
 	path => "debian/watch",
+	version => 1,
+	compnent => "",
+	compression => "",
+	repack => 0,
+	mode => "",
+	pretty => "",
+	date => "",
+	gitmode => "",
+	pgpmode => "",
+	decompress => "",
+	bare => 0,
+	user_agent => "",
+	pasv => 0,
+	passive => 0,
+	active => 0,
+	nopasv => 0,
+	unzipopt => "",
+	dversionmangle => "",
+	pagemangle => "",
+	uversionmangle => "",
+	versionmangle => "",
+	hrefdecode => "",
+	downloadurlmangle => "",
+	filenamemangle => "",
+	pgpsigurlmangle => "",
+	oversionmangle => ""
     }, $class;
     return $self;
 }
