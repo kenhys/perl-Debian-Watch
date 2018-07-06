@@ -1,4 +1,4 @@
-package Debian::Watch;
+package Parse::Debian::Watch;
 use 5.008001;
 use strict;
 use warnings;
@@ -14,15 +14,15 @@ __END__
 
 =head1 NAME
 
-Debian::Watch - It's new $module
+Parse::Debian::Watch - It's new $module
 
 =head1 SYNOPSIS
 
-    use Debian::Watch;
+    use Parse::Debian::Watch;
 
 =head1 DESCRIPTION
 
-Debian::Watch is ...
+Parse::Debian::Watch is ...
 
 =head1 LICENSE
 

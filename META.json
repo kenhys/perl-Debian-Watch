@@ -4,7 +4,7 @@
       "Kentaro Hayashi <kenhys@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.1, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.2, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Debian-Watch",
+   "name" : "Parse-Debian-Watch",
    "no_index" : {
       "directory" : [
          "t",

@@ -1,4 +1,4 @@
-name = "Debian-Watch"
+name = "Parse-Debian-Watch"
 # badges = ["travis"]
 module_maker="ModuleBuildTiny"
 static_install = "auto"

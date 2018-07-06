@@ -1,14 +1,14 @@
 # NAME
 
-Debian::Watch - It's new $module
+Parse::Debian::Watch - It's new $module
 
 # SYNOPSIS
 
-    use Debian::Watch;
+    use Parse::Debian::Watch;
 
 # DESCRIPTION
 
-Debian::Watch is ...
+Parse::Debian::Watch is ...
 
 # LICENSE
 
