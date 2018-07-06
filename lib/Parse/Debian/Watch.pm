@@ -6,6 +6,14 @@ use warnings;
 our $VERSION = "0.01";
 
 
+sub new {
+    my $class = shift;
+    my %params = @_;
+    my $self = bless {
+	path => "debian/watch",
+    }, $class;
+    return $self;
+}
 
 1;
 __END__
