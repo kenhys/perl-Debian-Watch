@@ -42,6 +42,141 @@ sub new {
     return $self;
 }
 
+sub version {
+    my $self = shift;
+    return $self->{version};
+}
+
+sub component {
+    my $self = shift;
+    return $self->{component};
+}
+
+sub compression {
+    my $self = shift;
+    return $self->{compression};
+}
+
+sub repack {
+    my $self = shift;
+    return $self->{repack};
+}
+
+sub mode {
+    my $self = shift;
+    return $self->{mode};
+}
+
+sub pretty {
+    my $self = shift;
+    return $self->{pretty};
+}
+
+sub date {
+    my $self = shift;
+    return $self->{date};
+}
+
+sub gitmode {
+    my $self = shift;
+    return $self->{gitmode};
+}
+
+sub pgpmode {
+    my $self = shift;
+    return $self->{pgpmode};
+}
+
+sub decompress {
+    my $self = shift;
+    return $self->{decompress};
+}
+
+sub bare {
+    my $self = shift;
+    return $self->{bare};
+}
+
+sub user_agent {
+    my $self = shift;
+    return $self->{user_agent};
+}
+
+sub pasv {
+    my $self = shift;
+    return $self->{pasv};
+}
+
+sub passive {
+    my $self = shift;
+    return $self->{passive};
+}
+
+sub active {
+    my $self = shift;
+    return $self->{active};
+}
+
+sub nopasv {
+    my $self = shift;
+    return $self->{nopasv};
+}
+
+sub unzipopt {
+    my $self = shift;
+    return $self->{unzipopt};
+}
+
+sub dversionmangle {
+    my $self = shift;
+    return $self->{dversionmangle};
+}
+
+sub dirversionmangle {
+    my $self = shift;
+    return $self->{dirversionmangle};
+}
+
+sub pagemangle {
+    my $self = shift;
+    return $self->{pagemangle};
+}
+
+sub uversionmangle {
+    my $self = shift;
+    return $self->{uversionmangle};
+}
+
+sub versionmangle {
+    my $self = shift;
+    return $self->{versionmangle};
+}
+
+sub hrefdecode {
+    my $self = shift;
+    return $self->{hrefdecode};
+}
+
+sub downloadurlmangle {
+    my $self = shift;
+    return $self->{downloadurlmangle};
+}
+
+sub filenamemangle {
+    my $self = shift;
+    return $self->{filenamemangle};
+}
+
+sub pgpsigurlmangle {
+    my $self = shift;
+    return $self->{pgpsigurlmangle};
+}
+
+sub oversionmangle {
+    my $self = shift;
+    return $self->{oversionmangle};
+}
+
 1;
 __END__
 
