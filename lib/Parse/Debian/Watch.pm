@@ -1771,51 +1771,6 @@ EOF
 # }}} code 3.9: call mk-origtargz
 #######################################################################
 
-#######################################################################
-# {{{ code 3.10: call uupdate
-#######################################################################
-    # Do whatever the user wishes to do
-    if ($action) {
-	my @cmd = shellwords($action);
-
-	# script invocation changed in $watch_version=4
-	if ($watch_version > 3) {
-	    if ($cmd[0] eq "uupdate") {
-		push @cmd, "-f";
-		if ($verbose) {
-		    push @cmd, "--verbose";
-		}
-		if ($badversion) {
-		    push @cmd, "-b";
-	        }
-	    }
-	    push @cmd, "--upstream-version", $common_mangled_newversion;
-	    if (abs_path($destdir) ne abs_path("..")) {
-		foreach my $origtar (@origtars) {
-		    copy(catfile($destdir, $origtar), catfile("..", $origtar));
-		}
-	    }
-	} elsif ($watch_version > 1) {
-	    # Any symlink requests are already handled by uscan
-	    if ($cmd[0] eq "uupdate") {
-		push @cmd, "--no-symlink";
-		if ($verbose) {
-		    push @cmd, "--verbose";
-		}
-		if ($badversion) {
-		    push @cmd, "-b";
-	        }
-	    }
-	    push @cmd, "--upstream-version", $common_mangled_newversion, $path;
-	} else {
-	    push @cmd, $path, $common_mangled_newversion;
-	}
-	my $actioncmd = join(" ", @cmd);
-	my $actioncmdmsg = `$actioncmd 2>&1`;
-	$? == 0 or uscan_die "$progname: Failed to Execute user specified script:\n   $actioncmd\n" . $actioncmdmsg;
-	dehs_verbose "Executing user specified script:\n   $actioncmd\n" . $actioncmdmsg;
-    }
-
     return 0;
 #######################################################################
 # }}} code 3.10: call uupdate
