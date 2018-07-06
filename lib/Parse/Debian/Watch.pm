@@ -2,6 +2,7 @@ package Parse::Debian::Watch;
 use 5.010;
 use strict;
 use warnings;
+use Carp;
 
 our $VERSION = "0.01";
 
@@ -39,6 +40,15 @@ sub new {
 	pgpsigurlmangle => "",
 	oversionmangle => ""
     }, $class;
+
+    my $path = $self->{path};
+    if (-r $path) {
+        open FILE, $path;
+        $self->{contents} = decode('utf-8', join("", <FILE>));
+        close FILE;
+    } else {
+        croak "Can't read file '$path'";
+    }
     return $self;
 }
 
