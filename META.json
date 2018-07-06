@@ -52,7 +52,21 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kenhys/perl-Parse-Debian-Watch/issues"
+      },
+      "homepage" : "https://github.com/kenhys/perl-Parse-Debian-Watch",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/kenhys/perl-Parse-Debian-Watch.git",
+         "web" : "https://github.com/kenhys/perl-Parse-Debian-Watch"
+      }
+   },
    "version" : "0.01",
+   "x_contributors" : [
+      "Kentaro Hayashi <kenhys@gmail.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27400_02",
    "x_static_install" : 1
 }
