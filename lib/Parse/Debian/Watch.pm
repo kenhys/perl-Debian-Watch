@@ -12,7 +12,7 @@ sub new {
     my $self = bless {
 	path => "debian/watch",
 	version => 1,
-	compnent => "",
+	component => "",
 	compression => "",
 	repack => 0,
 	mode => "",
