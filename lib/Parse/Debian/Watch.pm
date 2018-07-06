@@ -294,7 +294,7 @@ Parse::Debian::Watch is ...
 Copyright (C) Kentaro Hayashi.
 
 This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+it under the same terms as devscripts/uscan.pl
 
 =head1 AUTHOR
 
