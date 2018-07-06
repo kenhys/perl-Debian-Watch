@@ -298,7 +298,7 @@ it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-Kentaro Hayashi E<lt>hayashi@clear-code.comE<gt>
+Kentaro Hayashi E<lt>kenhys@gmail.com<gt>
 
 =cut
 
