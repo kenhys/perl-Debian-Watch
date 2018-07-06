@@ -228,7 +228,7 @@ sub _parse_watchfile {
 		$status=1;
 		last;
 	    }
-	    if ($self->{watch_version} > 3) {
+	    if ($self->{version} > 3) {
 	        # drop leading \s only if version 4
 		$nextline = <WATCH>;
 		$nextline =~ s/^\s*//;
@@ -239,18 +239,18 @@ sub _parse_watchfile {
 	    goto CHOMP;
 	}
 
-	if (! $watch_version) {
+	if (! $self->{version}) {
 	    if (/^version\s*=\s*(\d+)(\s|$)/) {
-		$self->{watch_version} = $1;
-		if ($self->{watch_version} < 2 or
-		    $self->{watch_version} > $self->{current_watchfile_version}) {
+		$self->{version} = $1;
+		if ($self->{version} < 2 or
+		    $self->{version} > $self->{current_watchfile_version}) {
 		    uscan_warn "$watchfile version number is unrecognised; skipping watch file\n";
 		    last;
 		}
 		next;
 	    } else {
 		uscan_warn "$watchfile is an obsolete version 1 watch file;\n   please upgrade to a higher version\n   (see uscan(1) for details).\n";
-		$watch_version=1;
+		$self->{version} = 1;
 	    }
 	}
 
@@ -258,7 +258,7 @@ sub _parse_watchfile {
 	#dehs_output if $dehs;
 
 	# Handle shell \\ -> \
-	s/\\\\/\\/g if $watch_version==1;
+	s/\\\\/\\/g if $self->{version}==1;
 
 	# Handle @PACKAGE@ @ANY_VERSION@ @ARCHIVE_EXT@ substitutions
 	my $any_version = '[-_]?(\d[\-+\.:\~\da-zA-Z]*)';
