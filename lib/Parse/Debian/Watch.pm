@@ -207,7 +207,6 @@ sub _parse_watchfile {
     my $self = shift;
     my $watchfile = $self->{path};
     my $package = $self->{package};
-    my $watch_version=0;
     my $status=0;
     my $nextline;
 
@@ -229,7 +228,7 @@ sub _parse_watchfile {
 		$status=1;
 		last;
 	    }
-	    if ($watch_version > 3) {
+	    if ($self->{watch_version} > 3) {
 	        # drop leading \s only if version 4
 		$nextline = <WATCH>;
 		$nextline =~ s/^\s*//;
@@ -242,9 +241,9 @@ sub _parse_watchfile {
 
 	if (! $watch_version) {
 	    if (/^version\s*=\s*(\d+)(\s|$)/) {
-		$watch_version=$1;
-		if ($watch_version < 2 or
-		    $watch_version > $self->{current_watchfile_version}) {
+		$self->{watch_version} = $1;
+		if ($self->{watch_version} < 2 or
+		    $self->{watch_version} > $self->{current_watchfile_version}) {
 		    uscan_warn "$watchfile version number is unrecognised; skipping watch file\n";
 		    last;
 		}
