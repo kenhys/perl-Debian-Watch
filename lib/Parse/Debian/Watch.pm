@@ -297,6 +297,22 @@ sub process_watchline ($$$$$$)
     # $pkg_version	the last source package version found in debian/changelog
     # $watchfile	usually debian/watch
 
+    my $bare = 0;
+    my $compression;
+    my %dehs_tags;
+    my $opt_user_agent;
+    my $opt_compression;
+    my $minversion;
+    my @components = ();
+    my $orig;
+    my $origcount = 0;
+    my $common_newversion;
+    my $common_mangled_newversion;
+    my $previous_newversion;
+    my $previous_newfile_base;
+    my $previous_sigfile_base;
+    my $previous_download_available;
+    my $uscanlog;
     my $repack = 0;
     my $user_agent = LWP::UserAgent::UscanCatchRedirections->new(env_proxy => 1);
     my $origline = $line;
