@@ -12,7 +12,7 @@ sub new {
     my %params = @_;
     my $self = bless {
 	path => "debian/watch",
-	name => "",
+	package => "",
 	version => "",
 	watch_version => 0,
 	component => "",
