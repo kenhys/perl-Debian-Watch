@@ -199,6 +199,10 @@ sub uscan_msg {
     # FIXME
 }
 
+sub uscan_debug {
+    # FIXME
+}
+
 sub _parse_watchfile {
     my $self = shift;
     my $watchfile = $self->{path};
