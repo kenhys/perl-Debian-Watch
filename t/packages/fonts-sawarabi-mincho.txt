@@ -1,0 +1,7 @@
+version=4
+
+opts="uversionmangle=s/-beta/~beta/;s/-rc/~rc/;s/-preview/~preview/, \
+pagemangle=s%<osdn:file url="([^<]*)</osdn:file>%<a href="$1">$1</a>%g, \
+downloadurlmangle=s%projects/sawarabi-fonts/downloads%frs/redir\.php?m=iij&f=sawarabi-fonts%g;s/xz\//xz/" \
+https://osdn.net/projects/sawarabi-fonts/releases/rss \
+ https://osdn.net/projects/sawarabi-fonts/downloads/.*/sawarabi-mincho@ANY_VERSION@@ARCHIVE_EXT@/ debian uupdate
