@@ -476,19 +476,19 @@ sub _process_watchline ($$$$$)
 		} elsif ($opt =~ /^\s*dirversionmangle\s*=\s*(.+?)\s*$/) {
 		    @{$options{'dirversionmangle'}} = split /;/, $1;
 		} elsif ($opt =~ /^\s*uversionmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'uversionmangle'}} = split /;/, $1;
+		    $self->{uversionmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*versionmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'uversionmangle'}} = split /;/, $1;
-		    @{$options{'dversionmangle'}} = split /;/, $1;
+		    $self->{uversionmangle} = [split /;/, $1];
+		    $self->{dversionmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*hrefdecode\s*=\s*(.+?)\s*$/) {
-		    $options{'hrefdecode'} = $1;
+		    $self->{hrefdecode} = $1;
 		} elsif ($opt =~ /^\s*downloadurlmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'downloadurlmangle'}} = split /;/, $1;
+		    $self->{downloadurlmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*filenamemangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'filenamemangle'}} = split /;/, $1;
+		    $self->{filenamemangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*pgpsigurlmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'pgpsigurlmangle'}} = split /;/, $1;
-		    $options{'pgpmode'} = 'mangle';
+		    $self->{pgpsigurlmangle} = [split /;/, $1];
+		    $self->{pgpmode} = 'mangle';
 		} elsif ($opt =~ /^\s*oversionmangle\s*=\s*(.+?)\s*$/) {
 		    @{$options{'oversionmangle'}} = split /;/, $1;
 		} else {
