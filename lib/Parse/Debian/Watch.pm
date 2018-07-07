@@ -5,6 +5,7 @@ use warnings;
 use Carp;
 use Data::Dumper;
 use constant CURRENT_WATCHFILE_VERSION => 5;
+use base 'LWP::UserAgent';
 
 our $VERSION = "0.01";
 
