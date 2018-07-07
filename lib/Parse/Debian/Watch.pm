@@ -306,7 +306,7 @@ sub _get_compression
     if (exists $opt2comp{$compression}) {
         $canonical_compression = $opt2comp{$compression};
     } else {
-        uscan_die "$progname: invalid compression, $compression given.\n";
+        uscan_die "invalid compression, $compression given.\n";
     }
     return $canonical_compression;
 }
