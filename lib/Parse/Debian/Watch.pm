@@ -45,9 +45,7 @@ sub new {
 
     my $path = $self->{path};
     if (-r $path) {
-        open FILE, $path;
-        $self->{contents} = decode('utf-8', join("", <FILE>));
-        close FILE;
+	$self->_parse_watchfile;
     } else {
         croak "Can't read file '$path'";
     }
