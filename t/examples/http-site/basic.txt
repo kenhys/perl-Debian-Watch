@@ -1,0 +1,3 @@
+version=4
+http://example.com/~user/release/foo.html \
+  files/foo-([\d\.]+)\.tar\.gz debian uupdate
