@@ -1,0 +1,4 @@
+version=4
+opts="pgpsigurlmangle=s%@ARCHIVE_EXT@$%.asc%,decompress" \
+  http://example.com/release/@PACKAGE@.html \
+  files/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@ debian uupdate
