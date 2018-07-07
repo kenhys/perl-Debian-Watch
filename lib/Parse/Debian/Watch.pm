@@ -283,6 +283,30 @@ sub _parse_watchfile {
     return $status;
 }
 
+sub _get_compression
+{
+    my ($self, $compression) = @_;
+    my $canonical_compression;
+    # be liberal in what you accept...
+    my %opt2comp = (
+        gz => 'gzip',
+        gzip => 'gzip',
+        bz2 => 'bzip2',
+        bzip2 => 'bzip2',
+        lzma => 'lzma',
+        xz => 'xz',
+        zip => 'zip',
+    );
+
+    # Normalize compression methods to the names used by Dpkg::Compression
+    if (exists $opt2comp{$compression}) {
+        $canonical_compression = $opt2comp{$compression};
+    } else {
+        uscan_die "$progname: invalid compression, $compression given.\n";
+    }
+    return $canonical_compression;
+}
+
 sub _process_watchline ($$$$$)
 {
 #######################################################################
