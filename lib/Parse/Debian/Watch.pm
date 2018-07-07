@@ -296,7 +296,6 @@ sub _process_watchline ($$$$$)
     # $pkg_version	the last source package version found in debian/changelog
     # $watchfile	usually debian/watch
 
-    my $self->{bare} = 0;
     my $compression;
     my %dehs_tags;
     my $opt_user_agent;
