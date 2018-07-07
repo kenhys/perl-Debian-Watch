@@ -439,42 +439,42 @@ sub _process_watchline ($$$$$)
 	    foreach my $opt (@opts) {
     		uscan_verbose "Parsing $opt\n";
 		if ($opt =~ /^\s*pasv\s*$/ or $opt =~ /^\s*passive\s*$/) {
-		    $options{'pasv'}=1;
+		    $self->{pasv} = 1;
 		} elsif ($opt =~ /^\s*active\s*$/ or $opt =~ /^\s*nopasv\s*$/
 		       or $opt =~ /^s*nopassive\s*$/) {
-		    $options{'pasv'}=0;
+		    $self->{pasv} = 0;
 		} elsif ($opt =~ /^\s*bare\s*$/) {
 		    # persistent $bare
 		    $self->{bare} = 1;
 		} elsif ($opt =~ /^\s*component\s*=\s*(.+?)\s*$/) {
-			$options{'component'} = $1;
+		    $self->{component} = $1;
 		} elsif ($opt =~ /^\s*mode\s*=\s*(.+?)\s*$/) {
-			$options{'mode'} = $1;
+		    $self->{mode} = $1;
 		} elsif ($opt =~ /^\s*pretty\s*=\s*(.+?)\s*$/) {
-			$options{'pretty'} = $1;
+		    $self->{pretty} = $1;
 		} elsif ($opt =~ /^\s*date\s*=\s*(.+?)\s*$/) {
-			$options{'date'} = $1;
+		    $self->{date} = $1;
 		} elsif ($opt =~ /^\s*gitmode\s*=\s*(.+?)\s*$/) {
-			$options{'gitmode'} = $1;
+		    $self->{gitmode} = $1;
 		} elsif ($opt =~ /^\s*pgpmode\s*=\s*(.+?)\s*$/) {
-			$options{'pgpmode'} = $1;
+		    $self->{pgpmode} = $1;
 		} elsif ($opt =~ /^\s*decompress\s*$/) {
-		    $options{'decompress'}=1;
+		    $self->{decompress} = 1;
 		} elsif ($opt =~ /^\s*repack\s*$/) {
 		    # non-persistent $options{'repack'}
-		    $options{'repack'} = 1;
+		    $self->{repack} = 1;
 		} elsif ($opt =~ /^\s*compression\s*=\s*(.+?)\s*$/) {
-		    $options{'compression'} = $self->_get_compression($1);
+		    $self->{compression} = $self->_get_compression($1);
 		} elsif ($opt =~ /^\s*repacksuffix\s*=\s*(.+?)\s*$/) {
-		    $options{'repacksuffix'} = $1;
+		    $self->{repacksuffix} = $1;
 		} elsif ($opt =~ /^\s*unzipopt\s*=\s*(.+?)\s*$/) {
-		    $options{'unzipopt'} = $1;
+		    $self->{unzipopt} = $1;
 		} elsif ($opt =~ /^\s*dversionmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'dversionmangle'}} = split /;/, $1;
+		    $self->{dversionmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*pagemangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'pagemangle'}} = split /;/, $1;
+		    $self->{pagemangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*dirversionmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'dirversionmangle'}} = split /;/, $1;
+		    $self->{dirversionmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*uversionmangle\s*=\s*(.+?)\s*$/) {
 		    $self->{uversionmangle} = [split /;/, $1];
 		} elsif ($opt =~ /^\s*versionmangle\s*=\s*(.+?)\s*$/) {
@@ -490,7 +490,7 @@ sub _process_watchline ($$$$$)
 		    $self->{pgpsigurlmangle} = [split /;/, $1];
 		    $self->{pgpmode} = 'mangle';
 		} elsif ($opt =~ /^\s*oversionmangle\s*=\s*(.+?)\s*$/) {
-		    @{$options{'oversionmangle'}} = split /;/, $1;
+		    $self->{oversionmangle} = [split /;/, $1];
 		} else {
 		    uscan_warn "unrecognised option $opt\n";
 		}
