@@ -313,7 +313,7 @@ sub _process_watchline ($$$$$)
     my $previous_download_available;
     my $uscanlog;
     my $repack = 0;
-    my $user_agent = LWP::UserAgent::UscanCatchRedirections->new(env_proxy => 1);
+    #my $user_agent = LWP::UserAgent::UscanCatchRedirections->new(env_proxy => 1);
     my $origline = $line;
     my ($base, $site, $dir, $filepattern, $pattern, $lastversion, $action);
     my $basedir;
@@ -339,7 +339,7 @@ sub _process_watchline ($$$$$)
 
     # Need to clear remembered redirection URLs so we don't try to build URLs
     # from previous watch files or watch lines
-    $user_agent->clear_redirections;
+    #$user_agent->clear_redirections;
 
     # Comma-separated list of features that sites being queried might
     # want to be aware of
@@ -404,7 +404,7 @@ sub _process_watchline ($$$$$)
 		$opts =~ /^\s*useragent\s*=\s*(.+?)\s*$/) {
 		my $user_agent_string = $1;
 		$user_agent_string = $opt_user_agent if defined $opt_user_agent;
-		$user_agent->agent($user_agent_string);
+		#$user_agent->agent($user_agent_string);
 		uscan_verbose "User-agent: $user_agent_string\n";
 		$opts='';
 	    }
