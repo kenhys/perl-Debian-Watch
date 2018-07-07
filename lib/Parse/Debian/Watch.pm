@@ -460,7 +460,7 @@ sub _process_watchline ($$$$$)
 		    # non-persistent $options{'repack'}
 		    $options{'repack'} = 1;
 		} elsif ($opt =~ /^\s*compression\s*=\s*(.+?)\s*$/) {
-		    $options{'compression'} = get_compression($1);
+		    $options{'compression'} = $self->_get_compression($1);
 		} elsif ($opt =~ /^\s*repacksuffix\s*=\s*(.+?)\s*$/) {
 		    $options{'repacksuffix'} = $1;
 		} elsif ($opt =~ /^\s*unzipopt\s*=\s*(.+?)\s*$/) {
@@ -542,12 +542,12 @@ sub _process_watchline ($$$$$)
 	}
 	# compression is persistent
 	if ($options{'mode'} eq 'http' or $options{'mode'} eq 'ftp') {
-	    $compression //= get_compression('gzip'); # keep backward compat.
+	    $compression //= $self->_get_compression('gzip'); # keep backward compat.
 	} else {
-	    $compression //= get_compression('xz');
+	    $compression //= $self->_get_compression('xz');
 	}
-	$compression = get_compression($options{'compression'}) if exists $options{'compression'};
-	$compression = get_compression($opt_compression) if defined $opt_compression;
+	$compression = $self->_get_compression($options{'compression'}) if exists $options{'compression'};
+	$compression = $self->_get_compression($opt_compression) if defined $opt_compression;
 
 	# Set $lastversion to the numeric last version
 	# Update $options{'versionmode'} (its default "newer")
