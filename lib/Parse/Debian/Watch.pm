@@ -296,7 +296,7 @@ sub _process_watchline ($$$$$)
     # $pkg_version	the last source package version found in debian/changelog
     # $watchfile	usually debian/watch
 
-    my $bare = 0;
+    my $self->{bare} = 0;
     my $compression;
     my %dehs_tags;
     my $opt_user_agent;
@@ -418,7 +418,7 @@ sub _process_watchline ($$$$$)
 		    $options{'pasv'}=0;
 		} elsif ($opt =~ /^\s*bare\s*$/) {
 		    # persistent $bare
-		    $bare = 1;
+		    $self->{bare} = 1;
 		} elsif ($opt =~ /^\s*component\s*=\s*(.+?)\s*$/) {
 			$options{'component'} = $1;
 		} elsif ($opt =~ /^\s*mode\s*=\s*(.+?)\s*$/) {
@@ -644,13 +644,13 @@ sub _process_watchline ($$$$$)
 	}
 
 	# Handle sf.net addresses specially
-	if (! $bare and $base =~ m%^https?://sf\.net/%) {
+	if (! $self->{bare} and $base =~ m%^https?://sf\.net/%) {
 	    uscan_verbose "sf.net redirection to qa.debian.org/watch/sf.php\n";
 	    $base =~ s%^https?://sf\.net/%https://qa.debian.org/watch/sf.php/%;
 	    $filepattern .= '(?:\?.*)?';
 	}
 	# Handle pypi.python.org addresses specially
-	if (! $bare and $base =~ m%^https?://pypi\.python\.org/packages/source/%) {
+	if (! $self->{bare} and $base =~ m%^https?://pypi\.python\.org/packages/source/%) {
 	    uscan_verbose "pypi.python.org redirection to pypi.debian.net\n";
 	    $base =~ s%^https?://pypi\.python\.org/packages/source/./%https://pypi.debian.net/%;
 	}
