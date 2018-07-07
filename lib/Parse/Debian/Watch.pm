@@ -282,7 +282,7 @@ sub _parse_watchfile {
     return $status;
 }
 
-sub process_watchline ($$$$$)
+sub _process_watchline ($$$$$)
 {
 #######################################################################
 # {{{ code 3.0: initializer and watchline parser
