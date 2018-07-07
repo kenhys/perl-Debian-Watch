@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Carp;
 use Data::Dumper;
+use constant CURRENT_WATCHFILE_VERSION => 5;
 
 our $VERSION = "0.01";
 
@@ -245,7 +246,7 @@ sub _parse_watchfile {
 	    if (/^version\s*=\s*(\d+)(\s|$)/) {
 		$self->{watch_version} = $1;
 		if ($self->{watch_version} < 2 or
-		    $self->{watch_version} > $self->{current_watchfile_version}) {
+		    $self->{watch_version} > CURRENT_WATCHFILE_VERSION) {
 		    uscan_warn "$watchfile version number is unrecognised; skipping watch file\n";
 		    last;
 		}
