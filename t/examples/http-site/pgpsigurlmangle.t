@@ -7,7 +7,7 @@ my $package = Parse::Debian::Watch->new(path => 't/examples/http-site/pgpsigurlm
 is($package->version, 4, "detects d/watch version 4");
 is($package->pgpmode, "mangle", "detects pgpmode: mangle");
 
-my $expected = ["s%$%.asc"];
 is($package->pgpsigurlmangle, $expected, "detects d/watch version 4");
+my $expected = ["s%$%.asc%"];
 
 done_testing;
