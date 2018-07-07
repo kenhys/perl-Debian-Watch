@@ -274,7 +274,7 @@ sub _parse_watchfile {
 	s/\@SIGNATURE_EXT\@/$signature_ext/g;
 
 	$status +=
-	    _process_watchline($_, $self->{watch_version}, $package, $version, $watchfile);
+	    $self->_process_watchline($_, $self->{watch_version}, $package, $version, $watchfile);
     }
 
     close WATCH or
@@ -288,7 +288,7 @@ sub _process_watchline ($$$$$)
 #######################################################################
 # {{{ code 3.0: initializer and watchline parser
 #######################################################################
-    my ($line, $watch_version, $pkg, $pkg_version, $watchfile) = @_;
+    my ($self, $line, $watch_version, $pkg, $pkg_version, $watchfile) = @_;
     # $line		watch line string (concatenated line over the tailing \ )
     # $watch_version	usually 4 (or 3)
     # $pkg_dir		usually .
