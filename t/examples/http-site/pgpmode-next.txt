@@ -1,0 +1,5 @@
+version=4
+opts="pgpmode=next" http://example.com/release/@PACKAGE@.html \
+  files/(?:\d+)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@ debian
+opts="pgpmode=previous" http://example.com/release/@PACKAGE@.html \
+  files/(?:\d+)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@ previous uupdate
