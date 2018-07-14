@@ -8,7 +8,7 @@ is($package->version, 4, "detects d/watch version 4");
 is($package->pgpmode, "mangle", "detects pgpmode");
 my $expected = [
    's%$%.sig%'
-]
+];
 is_deeply($package->pgpsigurlmangle, $expected, "detects pgpsigurlmangle");
 
 done_testing;
