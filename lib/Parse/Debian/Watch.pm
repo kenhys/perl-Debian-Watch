@@ -20,6 +20,7 @@ sub new {
 	component => "",
 	compression => "",
 	repack => 0,
+	repacksuffix => "",
 	mode => "",
 	pretty => "",
 	date => "",
@@ -73,6 +74,11 @@ sub compression {
 sub repack {
     my $self = shift;
     return $self->{repack};
+}
+
+sub repacksuffix {
+    my $self = shift;
+    return $self->{repacksuffix};
 }
 
 sub mode {
